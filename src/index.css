@@ -1,10 +1,34 @@
+/* index.css for global styling constants */
+:root {
+  --teal: #006D77;        /* Deep teal */
+  --yellow: #FFB347;      /* Warm orange-yellow */
+  --pink: #FF8BA7;        /* Soft pink */
+  --blue: #25afe6;        /* Light blue-teal */
+  --dark: #1A1A1A;        /* For background */
+  --spotify: #1DB954;     /* Spotify green */
+  --maroon: #800020;      /* Deep maroon */
+  --navy-blue: #1C3F6E;
+  --aqua-teal: #48A9A6; 
+  --soft-pink: #D4AFCD;
+  --light-yellow: #FDEBD3;
+  --eggplant: #260041;
+  --light-purple: #a895c7;
+  --lavender: #66669a;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
+  font-family: 'Lexend Zetta', sans-serif; /* my font */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: white;
+}
+
+h1 {
+  font-family: 'Modak', cursive;
 }
 
 code {

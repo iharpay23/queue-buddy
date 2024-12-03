@@ -1,0 +1,6 @@
+/* shared.css */
+:root {
+    --teal: #006466;
+    --card-glow: 0 4px 15px rgba(0,0,0,0.1), 0 0 30px white;
+    --card-glow-hover: 0 8px 25px rgba(0,0,0,0.2), 0 0 40px white;
+  }

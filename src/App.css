@@ -1,38 +1,90 @@
-.App {
+
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #111, #000);
+}
+
+.content {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title {
+  font-size: 6rem;
+  font-weight: 75;
+  filter: brightness(1.2);
+  color: white;
+  margin-top: 0;
+  margin-bottom: -1.9rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* .highlight {
+  background: linear-gradient(45deg, var(--light-purple), var(--eggplant));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+} */
+
+.highlight {
+  color: var(--blue);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.subtitle {
+  /* color: #999; */
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  /* font-weight: bold; */
+  font-size: 1.1rem;
+  font-family: 'Lexend Zetta', sans-serif;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.login {
+  background-color: var(--spotify);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.login:hover {
+  background-color: var(--spotify);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logout {
+  background-color: var(--maroon);
+  color: white;
+}
+
+.logout:hover {
+  background-color: var(--maroon);
+}
+
+.connected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.status {
+  color: var(--spotify);
+  font-size: 1.25rem;
 }
