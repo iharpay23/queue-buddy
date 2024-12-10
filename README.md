@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+# QueueBuddy 🎵  
+QueueBuddy began as a perfect queue generator for Spotify but is now transforming into a sleek lyrics visualizer!  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Why the change?  
+On November 27, 2024, Spotify discontinued several Web API endpoints that provided unique song metadata. This inspired a shift in focus toward creating a feature-rich lyrics visualization tool.  
 
-## Available Scripts
+## What is QueueBuddy?  
+QueueBuddy is a third-party web app leveraging Spotify's Client API and (soon) the Genius Lyrics API to enhance your music experience by:  
+- Displaying synchronized lyrics for your favorite tracks (work in progress).  
+- Offering a clean, intuitive interface to keep the focus on the music.  
 
-In the project directory, you can run:
+## Features (Current and Planned)  
+- **Synchronized Lyrics**: Real-time lyrics that match your music playback (coming soon).  
+- **Seamless Spotify Integration**: Connect with your Spotify account effortlessly.  
+- **Minimalist Design**: Prioritizing simplicity and usability.  
 
-### `npm start`
+## Inspiration  
+I listen to music all the time and trust my own ability to generate the perfect queue. For months, I have been trying to pinpoint the algorithm that makes two songs—even from drastically different genres—mesh well together. I wanted to encode this into a repeatable process capable of generating unexpectedly perfect queues for any user based on criteria such as:  
+- Song tempo  
+- Artist collaborations  
+- "Era"  
+- Feeling evoked  
+- Danceability  
+- Musical makeup  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+When I realized it might not be possible to access much of the criteria my algorithm relied on, I switched gears to the next best thing: a third-party integration that could still provide a unique listening experience Spotify does not yet offer—a lyrics visualizer for your music.  
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tech Stack  
+- **Backend**: TypeScript  
+- **Frontend**: React with TypeScript (TSX)  
+- **APIs**: Spotify Client API, Genius Lyrics API (planned integration)  
 
-### `npm test`
+## Current Progress  
+- Built a robust integration with Spotify's Client API.  
+- Established the foundation for the lyrics visualization feature.  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Future Plans  
+- Implement and refine lyrics visualization using the Genius Lyrics API.  
+- Add customizable lyric themes and styles.  
+- Introduce user annotations for lyrics.  
