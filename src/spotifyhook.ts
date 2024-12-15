@@ -52,6 +52,32 @@ export const useSpotifyPlayback = (token: string) => {
         }
     };
 
+    const skipToNext = async () => {
+        try {
+          await fetch (`https://api.spotify.com/v1/me/player/next`, {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+        } catch (error) {
+          console.error("Error skipping to next track:", error);
+        }
+    };
+
+    const skipToPrevious = async () => {
+      try {
+        await fetch (`https://api.spotify.com/v1/me/player/previous`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+      } catch (error) {
+        console.error("Error skipping to previous track:", error);
+      }
+    };
+
     /* polling logic to constantly update playback state */
     useEffect(() => {
         getPlaybackState();
@@ -59,5 +85,5 @@ export const useSpotifyPlayback = (token: string) => {
         return () => clearInterval(interval);
     }, [getPlaybackState]); /* remove token callback (?) */
 
-    return { isPlaying, currentTrack, togglePlay };
+    return { isPlaying, currentTrack, togglePlay, skipToNext, skipToPrevious};
 };

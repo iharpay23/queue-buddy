@@ -4,6 +4,7 @@ import { Track } from './types';
 
 export const useRecommendedSongs = (currentTrack: Track | null, token: string) => {
   const [recommendedTracks, setRecommendedTracks] = useState<Track[]>([]);
+  
   if (currentTrack) {
     console.log("listening to: ", currentTrack.name);
     console.log("with track id: ", currentTrack.id);

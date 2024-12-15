@@ -11,16 +11,14 @@ interface QueueDisplayProps {
 function QueueDisplay({token}: QueueDisplayProps) {
 
   /* give the user token to get state variables from spotify hook */
-  const { isPlaying, currentTrack, togglePlay } = useSpotifyPlayback(token);
+  const { isPlaying, currentTrack, togglePlay, skipToNext, skipToPrevious } = useSpotifyPlayback(token);
 
   const recommendedTracks = useRecommendedSongs(currentTrack, token);
 
   const onGenerateQueue = () => {
-    /* use current track and token to get a list of 10 recommended tracks */
-    for (let i = 0; i < recommendedTracks.length; i++) {
-      const track = recommendedTracks[i].name;
-      console.log("TRACK: ", track);
-    }
+    recommendedTracks.forEach((track) => {
+      console.log('TRACK:', track);
+    })
   }
 
   /* */
@@ -37,11 +35,11 @@ function QueueDisplay({token}: QueueDisplayProps) {
           <p className="artist">{currentTrack?.artists?.[0].name}</p>
         </div>
         <div className="controls">
-          <button className="control-btn">←</button>
+          <button className="control-btn" onClick={skipToPrevious}>←</button>
           <button className="control-btn play-btn" onClick={togglePlay}>
             {isPlaying ? '❚❚' : '▶'}
           </button>
-          <button className="control-btn">→</button>
+          <button className="control-btn" onClick={skipToNext} > → </button>
         </div>
         <button onClick={onGenerateQueue} className="generate-btn">
           Generate <span className="highlight">Queue</span>

@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import QueueDisplay from './QueueDisplay';
 import { useAuth, loginUrl } from './auth';
 import './App.css';
