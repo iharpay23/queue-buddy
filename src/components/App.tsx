@@ -1,5 +1,5 @@
 import QueueDisplay from './QueueDisplay';
-import { useAuth, loginUrl } from './auth';
+import { useAuth, loginUrl } from '../auth/auth';
 import './App.css';
 
 function App() {

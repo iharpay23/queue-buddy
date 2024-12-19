@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import { Track } from './types';
+import { Track } from '../types';
 
 
 export const useRecommendedSongs = (currentTrack: Track | null, token: string) => {

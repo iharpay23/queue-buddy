@@ -1,6 +1,6 @@
 // import React, { useState, useEffect } from 'react';
-import { useSpotifyPlayback } from './spotifyhook';
-import { useRecommendedSongs } from './generatecue';
+import { useSpotifyPlayback } from '../hooks/spotifyhook';
+import { useRecommendedSongs } from '../hooks/generatecue';
 import './QueueDisplay.css';  // assuming your CSS is in QueueDisplay.css
 
 interface QueueDisplayProps {
@@ -10,7 +10,7 @@ interface QueueDisplayProps {
 /* NOTE: this is how you return a JSX element */
 function QueueDisplay({token}: QueueDisplayProps) {
 
-  /* give the user token to get state variables from spotify hook */
+  /* get state variables and playback functions from spotify hook */
   const { isPlaying, currentTrack, togglePlay, skipToNext, skipToPrevious } = useSpotifyPlayback(token);
 
   const recommendedTracks = useRecommendedSongs(currentTrack, token);
