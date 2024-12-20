@@ -1,6 +1,6 @@
 /* SpotifyHook.ts */
 import { useEffect, useState, useCallback } from 'react';
-import { Track } from '../types';
+import { Track } from '../types/types';
 
 /* spotify hook to consolidate:
     * API calls for playback state

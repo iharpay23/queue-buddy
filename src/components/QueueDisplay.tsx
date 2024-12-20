@@ -1,7 +1,8 @@
 // import React, { useState, useEffect } from 'react';
 import { useSpotifyPlayback } from '../hooks/spotifyhook';
-import { useRecommendedSongs } from '../hooks/generatecue';
-import './QueueDisplay.css';  // assuming your CSS is in QueueDisplay.css
+import './QueueDisplay.css';  
+import LyricsVisualizer from './LyricsVisualizer';
+
 
 interface QueueDisplayProps {
   token: string;
@@ -12,14 +13,6 @@ function QueueDisplay({token}: QueueDisplayProps) {
 
   /* get state variables and playback functions from spotify hook */
   const { isPlaying, currentTrack, togglePlay, skipToNext, skipToPrevious } = useSpotifyPlayback(token);
-
-  const recommendedTracks = useRecommendedSongs(currentTrack, token);
-
-  const onGenerateQueue = () => {
-    recommendedTracks.forEach((track) => {
-      console.log('TRACK:', track);
-    })
-  }
 
   /* */
   return (
@@ -41,10 +34,13 @@ function QueueDisplay({token}: QueueDisplayProps) {
           </button>
           <button className="control-btn" onClick={skipToNext} > → </button>
         </div>
-        <button onClick={onGenerateQueue} className="generate-btn">
+        <button onClick={() => {}} className="generate-btn">
           Generate <span className="highlight">Queue</span>
         </button>
       </div>
+    <div className="visualizer-section">
+      <LyricsVisualizer currentTrack={currentTrack} />
+    </div>    
     </div>
   );
 };
