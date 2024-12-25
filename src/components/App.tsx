@@ -8,13 +8,13 @@ import './App.css';
 function App() {
   const { token, logout } = useAuth();
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
-  const [lyrics, setLyrics] = useState<string[]>([]); // Store lyrics for the current song
-  const [previousTrack, setPreviousTrack] = useState<Track | null>(null); // Keep track of last played song
+  const [lyrics, setLyrics] = useState<string[]>([]);
+  const [previousTrack, setPreviousTrack] = useState<Track | null>(null);
 
   useEffect(() => {
     // Fetch lyrics only when the song changes
     const fetchLyrics = async () => {
-      if (!currentTrack || currentTrack === previousTrack) return; // Prevent re-fetching the same song
+      if (!currentTrack || currentTrack === previousTrack) return; // Prevent duplicate fetch
       setPreviousTrack(currentTrack);
 
       console.log('Fetching lyrics for:', currentTrack.name);
@@ -28,26 +28,24 @@ function App() {
         }
       } catch (err) {
         console.error('Failed to fetch lyrics:', err);
-        setLyrics([]); // Handle missing lyrics gracefully
+        setLyrics([]);
       }
     };
 
     fetchLyrics();
-  }, [currentTrack, previousTrack]); // Fetch only when track changes
+  }, [currentTrack, previousTrack]);
 
   return (
     <div className="container">
-      <div className="lyrics-visualizer">
-        <LyricsVisualizer lyrics={lyrics} />
-      </div>
       <div className="content">
         <h1 className="title">Queue<span className="highlight">Buddy</span></h1>
-        <p> Let us help you build the perfect queue. </p>
+        <p> Here to help you build the perfect queue. </p>
         {!token ? (
           <a href={loginUrl} className="button login">Connect with Spotify</a>
         ) : (
           <div className="connected">
             <QueueDisplay token={token} setCurrentTrack={setCurrentTrack} />
+            <LyricsVisualizer lyrics={lyrics} />
             <button onClick={logout} className="button logout">Disconnect</button>
           </div>
         )}

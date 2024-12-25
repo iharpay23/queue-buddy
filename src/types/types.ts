@@ -5,4 +5,5 @@ export interface Track {
     album: {
       images: { url: string }[];
     };
+    duration_ms: number;
 }
