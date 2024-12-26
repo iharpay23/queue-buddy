@@ -11,7 +11,7 @@
 .queue-bouncer {
   position: relative;
   border-radius: inherit;
-  animation: pulse var(--pulse-duration, 1s) ease-in-out infinite;
+  animation: pulse 0.54s ease-in-out infinite;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,7 +32,6 @@
 
   }
 }
-
 
 .current-section {
   background: linear-gradient(var(--blue), var(--lavender), var(--eggplant));
