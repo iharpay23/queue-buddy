@@ -1,5 +1,5 @@
 import { useSpotifyPlayback } from '../hooks/spotifyhook';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './QueueDisplay.css';
 
 interface QueueDisplayProps {
@@ -11,6 +11,7 @@ function QueueDisplay({ token, setCurrentTrack }: QueueDisplayProps) {
   const { isPlaying, currentTrack, togglePlay, skipToNext, skipToPrevious } = useSpotifyPlayback(token);
   const [bpm, setBpm] = useState<number | null>(null);
   const [previousTrackId, setPreviousTrackId] = useState<string | null>(null);
+  const bouncerRef = useRef<HTMLDivElement>(null);
 
   // Fetch BPM when track changes
   useEffect(() => {
@@ -20,8 +21,6 @@ function QueueDisplay({ token, setCurrentTrack }: QueueDisplayProps) {
 
       try {
         const url = `http://localhost:3001/api/bpm?title=${encodeURIComponent(currentTrack.name)}&artist=${encodeURIComponent(currentTrack.artists[0].name)}`;
-        console.log('Fetching BPM for:', currentTrack.name);
-        
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error(`Server responded with status: ${response.status}`);
@@ -30,7 +29,10 @@ function QueueDisplay({ token, setCurrentTrack }: QueueDisplayProps) {
         const data = await response.json();
         if (data.bpm) {
           setBpm(parseFloat(data.bpm));
-          console.log('Got BPM:', data.bpm);
+          // Set the CSS variable for pulse duration
+          if (bouncerRef.current) {
+            bouncerRef.current.style.setProperty('--pulse-duration', `${60/data.bpm}s`);
+          }
         }
       } catch (err) {
         console.error('Failed to fetch BPM:', err);
@@ -44,13 +46,8 @@ function QueueDisplay({ token, setCurrentTrack }: QueueDisplayProps) {
   return (
     <div className="queue-container">
       <div 
-        className="queue-bouncer"
-        style={{ 
-          // Calculate animation duration from BPM (60 seconds / BPM = seconds per beat)
-          animation: `pulse ${bpm ? `${60/bpm}s` : '0.54s'} ease-in-out infinite`,
-          // Pause animation when music is paused
-          animationPlayState: isPlaying ? 'running' : 'paused'
-        }}
+        ref={bouncerRef}
+        className={`queue-bouncer ${isPlaying ? 'playing' : 'paused'}`}
       >
         <div className="current-section">
           {/* Album Cover */}

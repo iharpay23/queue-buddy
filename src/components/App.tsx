@@ -14,13 +14,17 @@ function App() {
   // In App.tsx
 useEffect(() => {
   const fetchLyrics = async () => {
-    if (!currentTrack || currentTrack === previousTrack) return;
+    console.log("FetchLyrics called");
+    if (!currentTrack) {
+      console.log("CurrentTrack is null or undefined. Exiting fetchLyrics.");
+      return;
+    }
+    console.log("below");
     setPreviousTrack(currentTrack);
 
     console.log('Fetching lyrics for:', currentTrack.name);
     try {
       const url = `http://localhost:3001/api/lyrics?title=${encodeURIComponent(currentTrack.name)}&artist=${encodeURIComponent(currentTrack.artists[0].name)}`;
-      // console.log('Requesting URL:', url);
       
       const response = await fetch(url);
       
@@ -37,6 +41,7 @@ useEffect(() => {
 
       const data = await response.json();
       if (data.lyrics) {
+        console.log("frontend lyrics: ", data.lyrics);
         setLyrics(data.lyrics);
       } else {
         console.warn('No lyrics found in response:', data);
@@ -47,7 +52,7 @@ useEffect(() => {
       setLyrics([]);
     }
   };
-
+  console.log("lyricss: ", lyrics);
   fetchLyrics();
 }, [currentTrack, previousTrack]);
 

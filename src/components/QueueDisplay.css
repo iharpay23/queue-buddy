@@ -11,10 +11,18 @@
 .queue-bouncer {
   position: relative;
   border-radius: inherit;
-  animation: pulse 0.54s ease-in-out infinite;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* Base animation that will be adjusted by dynamic BPM */
+.queue-bouncer.playing {
+  animation: pulse var(--pulse-duration, 0.54s) ease-in-out infinite;
+}
+
+.queue-bouncer.paused {
+  animation-play-state: paused;
 }
 
 @keyframes pulse {
@@ -29,7 +37,6 @@
   100% {
     transform: scale(1);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
-
   }
 }
 
