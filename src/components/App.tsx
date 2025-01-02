@@ -1,72 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useAuth, loginUrl } from '../auth/auth';
-import LyricsVisualizer from './LyricsVisualizer';
 import QueueDisplay from './QueueDisplay';
 import { Track } from '../types/types';
+import LandingPage from './LandingPage';
 import './App.css';
 
 function App() {
   const { token, logout } = useAuth();
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
-  const [lyrics, setLyrics] = useState<string[]>([]);
-  const [previousTrack, setPreviousTrack] = useState<Track | null>(null);
+  // const [lyrics, setLyrics] = useState<string[]>([]);
 
-  // In App.tsx
-useEffect(() => {
-  const fetchLyrics = async () => {
-    console.log("FetchLyrics called");
-    if (!currentTrack) {
-      console.log("CurrentTrack is null or undefined. Exiting fetchLyrics.");
-      return;
-    }
-    console.log("below");
-    setPreviousTrack(currentTrack);
-
-    console.log('Fetching lyrics for:', currentTrack.name);
-    try {
-      const url = `http://localhost:3001/api/lyrics?title=${encodeURIComponent(currentTrack.name)}&artist=${encodeURIComponent(currentTrack.artists[0].name)}`;
-      
-      const response = await fetch(url);
-      
-      // Log the response status and headers
-      // console.log('Response status:', response.status);
-      // console.log('Response headers:', Object.fromEntries(response.headers.entries()));
-      
-      // Check if response is ok before parsing
-      if (!response.ok) {
-        const text = await response.text();
-        console.error('Server responded with:', text);
-        throw new Error(`Server responded with status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      if (data.lyrics) {
-        console.log("frontend lyrics: ", data.lyrics);
-        setLyrics(data.lyrics);
-      } else {
-        console.warn('No lyrics found in response:', data);
-        setLyrics([]);
-      }
-    } catch (err) {
-      console.error('Failed to fetch lyrics:', err);
-      setLyrics([]);
-    }
-  };
-  console.log("lyricss: ", lyrics);
-  fetchLyrics();
-}, [currentTrack, previousTrack]);
 
   return (
     <div className="container">
       <div className="content">
-        <h1 className="title">Queue<span className="highlight">Buddy</span></h1>
-        <p> Here to help you build the perfect queue. </p>
+        <h1 className="title">Q<span className="highlight">Buddy</span></h1>
         {!token ? (
-          <a href={loginUrl} className="button login">Connect with Spotify</a>
+          <LandingPage loginUrl={loginUrl} />
         ) : (
           <div className="connected">
             <QueueDisplay token={token} setCurrentTrack={setCurrentTrack} />
-            <LyricsVisualizer lyrics={lyrics} />
+            {/* <LyricsVisualizer lyrics={lyrics} /> */}
             <button onClick={logout} className="button logout">Disconnect</button>
           </div>
         )}

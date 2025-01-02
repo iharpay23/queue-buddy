@@ -1,4 +1,8 @@
 /* index.css for global styling constants */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --teal: #006D77;        /* Deep teal */
   --yellow: #FFB347;      /* Warm orange-yellow */
@@ -35,3 +39,5 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
