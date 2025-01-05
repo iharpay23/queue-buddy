@@ -4,46 +4,52 @@ const LandingPage = ({ loginUrl }: { loginUrl: string }) => {
   return (
     <div className="flex flex-col items-center justify-center p-8">
       {/* Digital Stereo System text */}
-      <div className="text-zinc-500 font-mono text-sm tracking-widest text-center mb-8">
+      <div className="text-zinc-400 font-mono text-sm tracking-widest text-center mb-8">
         DIGITAL STEREO SYSTEM
       </div>
 
       {/* Record Player */}
       <div className="relative w-96 h-96">
-        {/* Base/Cabinet with enhanced gradients and texture */}
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 via-zinc-800 to-zinc-900 rounded-lg shadow-xl overflow-hidden">
-          {/* Single clean shine effect */}
+        {/* Base/Cabinet with enhanced chrome look */}
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-800 via-zinc-700 to-zinc-800 rounded-lg shadow-xl overflow-hidden">
+          {/* Main metallic surface */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-white/5" />
+
+          {/* Moving shine effect */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute inset-[-10%] bg-gradient-to-r from-transparent via-white/10 to-transparent skew-y-12 animate-shine" />
+            <div className="absolute inset-[-10%] bg-gradient-to-r from-transparent via-white/20 to-transparent skew-y-12 animate-shine" />
           </div>
 
-          {/* Subtle metallic texture */}
+          {/* Metallic texture */}
           <div
-            className="absolute inset-0 opacity-5"
+            className="absolute inset-0 opacity-10"
             style={{
               backgroundImage: `repeating-linear-gradient(
-            135deg,
-            white 0px,
-            white 1px,
-            transparent 1px,
-            transparent 4px
-        )`,
+                135deg,
+                white 0px,
+                white 1px,
+                transparent 1px,
+                transparent 4px
+              )`,
+            }}
+          />
+
+          {/* Edge highlight */}
+          <div
+            className="absolute inset-0 rounded-lg"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.15) 0%, transparent 60%)",
             }}
           />
 
           {/* Inner shadow for depth */}
-          <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.5)]" />
+          <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.7)] rounded-lg" />
 
-          {/* Turntable surface with enhanced depth */}
-          <div className="absolute top-8 left-8 right-8 bottom-8 bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-md shadow-inner">
-            {/* Subtle surface texture */}
-            <div
-              className="absolute inset-0 bg-zinc-800/10 rounded-md"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle at 50% 50%, transparent 90%, rgba(0,0,0,0.2) 100%)",
-              }}
-            />
+          {/* Turntable surface */}
+          <div className="absolute top-8 left-8 right-8 bottom-8 bg-gradient-to-b from-zinc-800 to-zinc-900 rounded-md shadow-inner overflow-hidden">
+            {/* Surface shine */}
+            <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent rounded-md" />
 
             {/* Record */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 group">
@@ -92,9 +98,9 @@ const LandingPage = ({ loginUrl }: { loginUrl: string }) => {
       </div>
 
       {/* Footer text */}
-      <div className="text-zinc-600 font-mono text-xs mt-8">
+      {/* <div className="text-zinc-500 font-mono text-xs mt-8">
         MODEL QB-2025 · A BEAT-SYNCED LISTENING ENGINE
-      </div>
+      </div> */}
     </div>
   );
 };
